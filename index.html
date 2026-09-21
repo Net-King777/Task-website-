@@ -21,11 +21,10 @@
         Stay productive.</P>
        </aside>
        <br>
-       <div class="greet">
-       <h1>Good moring,
-        <br>
-        Zion
-       </h1>
+        <h1 id="greeting">Good morning,
+    <br>
+    Zion
+      </h1>
        <p>Lets dive into todays tasks</p>
        </div>
        <div class="stats">
@@ -96,7 +95,25 @@ const settingsSection = document.getElementById("settings");
 const darkBtn = document.getElementById("dark");
 const lightBtn = document.getElementById("light");
 
+function updateGreeting() {
+    const hour = new Date().getHours();
+    const minute = new Date().getMinutes();
+    const greeting = document.getElementById("greeting");
 
+    const time = hour + (minute / 60);
+
+    if (time >= 12.5 && time < 16.5) {
+        greeting.innerHTML = "Good afternoon,<br>Zion";
+    } else if (time >= 16.5 && time < 24) {
+        greeting.innerHTML = "Good evening,<br>Zion";
+    } else {
+        greeting.innerHTML = "Good morning,<br>Zion";
+    }
+}
+
+updateGreeting();
+
+        
 function updateCounters() {
     const tasks = taskList.querySelectorAll(".task");
     const completed = taskList.querySelectorAll(".task input[type='checkbox']:checked").length;
