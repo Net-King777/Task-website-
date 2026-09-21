@@ -98,22 +98,19 @@ const lightBtn = document.getElementById("light");
 function updateGreeting() {
     const hour = new Date().getHours();
     const minute = new Date().getMinutes();
-    const greeting = document.getElementById("greeting");
-
     const time = hour + (minute / 60);
+    const greeting = document.getElementById("greeting");
 
     if (time >= 12.5 && time < 16.5) {
         greeting.innerHTML = "Good afternoon,<br>Zion";
-    } else if (time >= 16.5 && time < 24) {
+    } else if (time >= 16.5) {
         greeting.innerHTML = "Good evening,<br>Zion";
     } else {
         greeting.innerHTML = "Good morning,<br>Zion";
     }
 }
 
-updateGreeting();
-
-        
+updateGreeting();        
 function updateCounters() {
     const tasks = taskList.querySelectorAll(".task");
     const completed = taskList.querySelectorAll(".task input[type='checkbox']:checked").length;
