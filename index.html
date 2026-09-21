@@ -100,24 +100,19 @@ const lightBtn = document.getElementById("light");
 
     const greeting = document.querySelector(".greet h1");
 
-    function updateGreeting() {
-        const hour = new Date().getHours();
-        const minute = new Date().getMinutes();
+const greeting = document.querySelector(".greet h1");
 
-        const currentTime = hour + minute / 60;
+const hour = new Date().getHours();
 
-        if (currentTime >= 12.5 && currentTime < 13) {
-            greeting.innerHTML = "Good afternoon,<br>Zion";
-        } 
-        else if (currentTime >= 16.5) {
-            greeting.innerHTML = "Good evening,<br>Zion";
-        } 
-        else {
-            greeting.innerHTML = "Good morning,<br>Zion";
-        }
-    }
-
-    updateGreeting();
+if (hour >= 12 && hour < 16.5) {
+    greeting.innerHTML = "Good afternoon,<br>Zion";
+}
+else if (hour >= 16.5) {
+    greeting.innerHTML = "Good evening,<br>Zion";
+}
+else {
+    greeting.innerHTML = "Good morning,<br>Zion";
+}
 
 function updateCounters() {
     const tasks = taskList.querySelectorAll(".task");
