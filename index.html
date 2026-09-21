@@ -100,17 +100,17 @@ const lightBtn = document.getElementById("light");
 
     const greeting = document.querySelector(".greet h1");
 
-const greeting = document.querySelector(".greet h1");
+const now = new Date();
+const hour = now.getHours();
+const minute = now.getMinutes();
 
-const hour = new Date().getHours();
-
-if (hour >= 12 && hour < 16.5) {
-    greeting.innerHTML = "Good afternoon,<br>Zion";
-}
-else if (hour >= 16.5) {
-    greeting.innerHTML = "Good evening,<br>Zion";
-}
-else {
+if (hour > 12 || (hour === 12 && minute >= 30)) {
+    if (hour < 16 || (hour === 16 && minute < 30)) {
+        greeting.innerHTML = "Good afternoon,<br>Zion";
+    } else {
+        greeting.innerHTML = "Good evening,<br>Zion";
+    }
+} else {
     greeting.innerHTML = "Good morning,<br>Zion";
 }
 
