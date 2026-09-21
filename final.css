@@ -169,6 +169,13 @@ left: 39px;
     margin-right: 30px;
 }
 
+.comp,
+.tot,
+.rem{
+    flex: 1;
+    max-width: 300px;
+    min-width: 0;
+}
 #comp{
  background-color: #17191D;
     color: aliceblue;
