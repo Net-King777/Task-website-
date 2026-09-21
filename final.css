@@ -164,11 +164,10 @@ left: 39px;
 .stats{
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap:50px;
-    margin-left: 250px;
+    gap: 30px;
+    margin-left: 300px;
+    margin-right: 30px;
 }
-
 
 #comp{
  background-color: #17191D;
