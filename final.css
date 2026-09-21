@@ -1,0 +1,318 @@
+body{
+background-image: url(ff.jpg);
+background-repeat: no-repeat;
+background-size:cover ;
+}
+
+
+#searchBar {
+    display: block;
+    width: 600px;
+    box-sizing: border-box;
+    margin-left: 500px;
+    padding: 12px 15px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background: #17191D;
+    color: aliceblue;
+    font-size: 16px;
+    outline: none;
+
+}
+
+#searchBar:focus {
+    border-color: aliceblue;
+}
+
+#history,
+#settings {
+    display: none;
+    margin: 30px 30px 30px 280px;
+    padding: 24px;
+    max-width: 800px;
+    box-sizing: border-box;
+    border-radius: 13px;
+    background: #17191D;
+    color: aliceblue;
+}
+
+#history h2,
+#settings h2 {
+    margin-top: 0;
+}
+
+#historyList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-item {
+    display: block;
+    padding: 12px;
+    border-bottom: 1px solid #3a3a3a;
+    color: aliceblue;
+    font-size: 17px;
+}
+
+.emptyHistory {
+    color: #aaa;
+}
+
+.settingRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+    color: aliceblue;
+    font-size: 17px;
+}
+
+#settings button {
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.taskText {
+    color: aliceblue;
+}
+
+.btns {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+}
+
+
+
+#history {
+    display: none;
+    color: aliceblue;
+     box-shadow: -3px 5px 5px 5px grey;
+    width: 900px;
+    margin-left: 350px;
+}
+
+.logo {
+    width: 278px;
+    height: 180px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#settings{
+    box-shadow: -3px 5px 5px 5px grey;
+    margin-left: 350px;
+}
+
+
+#sidebar {
+    background-color:#17191D ;
+    position: fixed;
+    left: 0;
+    width: 284px;
+    height: calc(100vh - 20px);
+     border-radius: 13px;
+     display: flex;
+     flex-direction: column;
+     gap: 25px;
+     box-shadow: 5px 5px 10px  grey ;
+}
+
+#sidebar div{
+       width: 279px;
+       height: 170px;
+       justify-content: center;
+       align-items: center;
+       background-color: grey;
+       border-radius: 15px;
+}
+
+#sidebar a{
+    position: relative;
+    top:0.3px;
+color: aliceblue;
+font-size: 29px;
+left: 39px;
+
+}
+
+#sidebar p{
+    position: relative;
+    left: 24px;
+     font-size: 20px;
+     color: aliceblue;
+     margin-top:100px ;
+}
+
+.greet{
+ color: aliceblue;
+    font-size: 30px;
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+.stats{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:50px;
+    margin-left: 250px;
+}
+
+
+#comp{
+ background-color: #17191D;
+    color: aliceblue;
+    border-radius: 15px;
+ box-shadow:  10px 10px 20px grey;
+}
+
+#tot{
+     background-color: #17191D;
+    color: aliceblue;
+    border-radius: 15px;
+     box-shadow: -3px 5px 5px 5px grey;
+}
+
+#rem{
+     background-color: #17191D;
+    color: aliceblue;
+    border-radius: 15px;
+    width: 300px;
+     box-shadow: -3px 5px 5px 5px grey;
+}
+
+#rem h2{
+    position: relative;
+    left: 30px;
+}
+
+#rem p {
+     position: relative;
+    left: 39px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+
+#comp{
+     background-color: #17191D;
+    color: aliceblue;
+    border-radius: 15px;
+    width: 300px;
+}
+
+#comp h2{
+    position: relative;
+    left: 30px;
+}
+
+#comp p {
+     position: relative;
+    left: 39px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+
+
+#tot{
+     background-color: #17191D;
+    color: aliceblue;
+    border-radius: 15px;
+    width: 300px;
+}
+
+#tot h2{
+    position: relative;
+    left: 30px;
+}
+
+#tot p {
+     position: relative;
+    left: 39px;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+#tasklist{
+    background-color: #17191D;
+    border-radius:15px;
+    width: 900px;
+    color: aliceblue;
+    height: 700px;
+    position: relative;
+    left: 350px ;
+    box-shadow: -3px 5px 5px 5px grey;   
+    margin-top: 50px;
+}
+#tasklist h2 {
+    font-size: 50px;
+    position: relative;
+    top: 20px;
+    left: 35px;
+    color: aliceblue;
+}
+#tasklist div{
+    display: flex;
+    gap:67px;
+    align-items: center;
+}
+#all{
+    border: none;
+    width: 100px;
+    height: 50px;
+    box-shadow:  5px 5px 5px grey;
+    font-size: 20px;
+    border-radius: 12px;
+    position: relative;
+    top: 30px;
+}
+
+
+.btns{
+    margin-left: auto;
+    margin-right: 30px;
+   border: none;
+}
+
+.dele{
+    border-radius: 7px;
+    width: 60px;
+    height: 20px;
+    color: aliceblue;
+    background-color: #17191D;
+}
+
+.edi{
+    border-radius: 7px;
+    width: 60px;
+    height: 20px;
+    color: aliceblue;
+    background-color: #17191D;
+}
+
+#tasks{
+    height: 30px;
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+    top: 30px;
+}
+
+hr{
+    
+    border-radius: 15px;
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Webtasks</title>
+        <link rel="stylesheet" href="final.css">
+    
+
+</head>
+    <body>
+       <aside id="sidebar">
+              <input type="text" id="searchBar" placeholder="Search tasks and history...">
+  
+        <div>
+         <img src="logo.png" alt="" class="logo">
+        </div>
+         <br>
+      <a id="historyBtn">History</a>
+      <a id="settingsBtn">Settings</a>
+      <P>Stay organized.
+        <br>
+        Stay productive.</P>
+       </aside>
+       <br>
+       <div class="greet">
+       <h1>Good moring,
+        <br>
+        Zion
+       </h1>
+       <p>Lets dive into todays tasks</p>
+       </div>
+       <div class="stats">
+
+         <div id="comp">
+           <h2>Completed</h2>
+           <p id="compl">0</p>
+         </div>
+
+<div id="tot">
+<h2>Total tasks</h2>
+<p id="total">0</p>
+</div>
+
+<div id="rem">
+    <h2>Remainig</h2>
+    <P id="rema">0</P>
+</div>
+       </div>
+
+       <div id="tasklist">
+        <div>
+        <h2 >My tasks</h2>
+        <input type="text" id="tasks" placeholder="New task">  
+      <button id="all">Add task</button>
+              </div>
+          <hr>
+      <ul id="tt"></ul>
+          
+    </div>
+<br>
+   
+    <div id="history">
+       <h2>History</h2>
+       <div id="historyList">
+         <p class="emptyHistory">No history yet.</p>
+       </div>
+     </div>
+
+
+     <div id="settings">
+    <h2>Settings</h2>
+
+    <button id="dark">Dark Mode</button>
+    <button id="light">Light Mode</button>
+</div>
+
+
+</body>
+    <script>
+const taskInput = document.getElementById("tasks");
+const addTaskBtn = document.getElementById("all");
+const taskList = document.getElementById("tt");
+const counter = document.getElementById("total");
+const completedCounter = document.getElementById("compl");
+const remainingCounter = document.getElementById("rema");
+
+const historyBtn = document.getElementById("historyBtn");
+const historySection = document.getElementById("history");
+const historyList = document.getElementById("historyList");
+
+
+const searchBar = document.getElementById("searchBar");
+
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsSection = document.getElementById("settings");
+
+const darkBtn = document.getElementById("dark");
+const lightBtn = document.getElementById("light");
+
+
+function updateCounters() {
+    const tasks = taskList.querySelectorAll(".task");
+    const completed = taskList.querySelectorAll(".task input[type='checkbox']:checked").length;
+
+    counter.textContent = tasks.length;
+    completedCounter.textContent = completed;
+    remainingCounter.textContent = tasks.length - completed;
+}
+
+function addHistory(message) {
+    const empty = historyList.querySelector(".emptyHistory");
+    if (empty) empty.remove();
+
+    const item = document.createElement("div");
+    item.className = "history-item";
+    item.textContent = message;
+
+    historyList.insertBefore(item, historyList.firstChild);
+}
+
+function showOnly(section) {
+    historySection.style.display = "none";
+
+    if (section === "history") {
+        historySection.style.display = "block";
+    }
+}
+
+function addTask() {
+    const taskText = taskInput.value.trim();
+
+    if (!taskText) {
+        taskInput.focus();
+        return;
+    }
+
+    const task = document.createElement("div");
+    task.className = "task";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "taskCheck";
+
+    const text = document.createElement("span");
+    text.className = "taskText";
+    text.style.color = "aliceblue";
+    text.textContent = taskText;
+
+    const buttons = document.createElement("div");
+    buttons.className = "btns";
+
+    const editBtn = document.createElement("button");
+    editBtn.type = "button";
+    editBtn.textContent = "Edit";
+    editBtn.className = "edi";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.type = "button";
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className = "dele";
+
+    buttons.append(editBtn, deleteBtn);
+    task.append(checkbox, text, buttons);
+
+    const line = document.createElement("hr");
+
+    taskList.append(task, line);
+
+    addHistory('➕ Task added: "' + taskText + '"');
+
+    checkbox.addEventListener("change", function () {
+        text.style.textDecoration = checkbox.checked ? "line-through" : "none";
+
+        if (checkbox.checked) {
+            addHistory('✓ Task completed: "' + text.textContent + '"');
+        } else {
+            addHistory('↩ Task reopened: "' + text.textContent + '"');
+        }
+
+        updateCounters();
+    });
+
+    editBtn.addEventListener("click", function () {
+        const oldText = text.textContent;
+        const newText = prompt("Edit your task:", oldText);
+
+        if (newText !== null && newText.trim() !== "") {
+            text.textContent = newText.trim();
+            addHistory('✎ Task edited: "' + oldText + '" → "' + newText.trim() + '"');
+        }
+    });
+
+    deleteBtn.addEventListener("click", function () {
+        const deletedText = text.textContent;
+
+        task.remove();
+        line.remove();
+
+        addHistory('🗑 Task deleted: "' + deletedText + '"');
+        updateCounters();
+    });
+
+    taskInput.value = "";
+    updateCounters();
+    taskInput.focus();
+}
+
+addTaskBtn.addEventListener("click", addTask);
+
+taskInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        addTask();
+    }
+});
+
+historyBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    showOnly("history");
+    historySection.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+settingsBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    settingsSection.style.display = "block";
+    settingsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+function changeThemeddd() {
+    console.log("CHANGE THEME FUNCTION WORKED");
+
+    
+    document.getElementById("rem").style.backgroundColor = "#17191D";
+    document.getElementById("rem").style.color = "aliceblue";
+    
+    document.getElementById("comp").style.backgroundColor = "#17191D";
+    document.getElementById("comp").style.color = "aliceblue";
+    
+    document.getElementById("tot").style.backgroundColor = "#17191D";
+    document.getElementById("tot").style.color = "aliceblue";
+    
+    document.getElementById("sidebar").style.backgroundColor = "#17191D";
+    document.getElementById("sidebar").style.color = "aliceblue";
+    
+    document.getElementById("tasklist").style.backgroundColor = "#17191D";
+    document.getElementById("tasklist").style.color = "aliceblue";
+    
+    document.getElementById("history").style.backgroundColor = "#17191D";
+    document.getElementById("history").style.color = "aliceblue";
+
+     document.getElementById("settings").style.backgroundColor = "#17191D";
+    document.getElementById("settings").style.color = "aliceblue";
+   
+
+    document.querySelectorAll("#settings h2, #history h2, #rem h2, #comp h2, #tot h2, #tasklist h2, #tasklist span, #sidebar p, #sidebar a, .greet h1, .greet p, #tasklist p")
+ .forEach(function(element) {
+        element.style.color = "aliceblue";
+    });
+
+
+}
+
+darkBtn.addEventListener("click", changeThemeddd);
+
+function changeTheme() {
+    console.log("CHANGE THEME FUNCTION WORKED");
+    
+
+     
+
+    document.getElementById("settings").style.backgroundColor = "white";
+    document.getElementById("settings").style.color = "black";
+       
+
+    document.getElementById("history").style.backgroundColor = "white";
+    document.getElementById("history").style.color = "black";
+    
+    document.getElementById("rem").style.backgroundColor = "white";
+    document.getElementById("rem").style.color = "black";
+    
+    document.getElementById("comp").style.backgroundColor = "white";
+    document.getElementById("comp").style.color = "black";
+    
+    document.getElementById("tot").style.backgroundColor = "white";
+    document.getElementById("tot").style.color = "black";
+    
+    document.getElementById("sidebar").style.backgroundColor = "white";
+    document.getElementById("sidebar").style.color = "black";
+    
+    document.getElementById("tasklist").style.backgroundColor = "white";
+    document.getElementById("tasklist").style.color = "black";
+    
+document.querySelectorAll("#settings h2, #history h2, #rem h2, #comp h2, #tot h2, #tasklist h2, #tasklist span, #sidebar p, #sidebar a, .greet h1, .greet p, #tasklist p")
+ .forEach(function(element) {
+        element.style.color = "black";
+    });
+
+}
+
+lightBtn.addEventListener("click", changeTheme);
+
+
+searchBar.addEventListener("input", function () {
+    const query = searchBar.value.toLowerCase().trim();
+
+    taskList.querySelectorAll(".task").forEach(function (task) {
+        const text = task.querySelector(".taskText").textContent.toLowerCase();
+        const visible = !query || text.includes(query);
+
+        task.style.display = visible ? "flex" : "none";
+
+        const line = task.nextElementSibling;
+        if (line && line.tagName === "HR") {
+            line.style.display = visible ? "block" : "none";
+        }
+    });
+
+    historyList.querySelectorAll(".history-item").forEach(function (item) {
+        const visible = !query || item.textContent.toLowerCase().includes(query);
+        item.style.display = visible ? "block" : "none";
+    });
+});
+
+showOnly(null);
+updateCounters();
+</script>
+</html>
