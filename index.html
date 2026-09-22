@@ -105,6 +105,7 @@ const now = new Date();
 const hour = now.getHours();
 const minute = now.getMinutes();
 
+
 if (hour > 12 || (hour === 12 && minute >= 30)) {
     if (hour < 16 || (hour === 16 && minute < 30)) {
         greeting.innerHTML = "Good afternoon,<br>Zion";
